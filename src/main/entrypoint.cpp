@@ -4,7 +4,7 @@
 
 int main()
 {
-	Node n;
+	ASNode n;
 
 	std::cout << "Hello World" << std::endl;
 	return 0x0;
