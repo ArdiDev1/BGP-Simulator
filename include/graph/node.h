@@ -17,7 +17,6 @@ public:
 	std::unordered_map<uint32_t, Relation> relatives;
 	BGPRouter router;
 	
-
 	uint32_t _asn;
 
 	ASNode() : _asn(0) {}
@@ -26,7 +25,7 @@ public:
 		_asn = asn;
 	}
 
-	void receive(Route route);
+	void receive(Route& route);
 	void propogate(Route& route);
 	bool can_export(Relation from, Relation to);
 	void send_to(uint32_t asn, Route& route);

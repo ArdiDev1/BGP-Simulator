@@ -3,23 +3,15 @@
 
 extern std::unordered_map<uint32_t, ASNode> network;
 
-void ASNode::receive(Route route)
+void ASNode::receive(Route& route)
 {
-
   for (uint32_t as : route.path) {
-    if (as == _asn)
+    if (as == _asn) {
       return;
-  }
-
-  if (route.next_hop != _asn) {
-    auto it = relatives.find(route.next_hop);
-    if (it != relatives.end()) {
-      route.recv_from = it->second;
     }
   }
 
-   route.path.insert(route.path.begin(), _asn);
-
+  route.path.push_back(_asn);
 
   if (!router.process_route(route)) {
     return; 
